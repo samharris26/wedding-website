@@ -9,6 +9,7 @@
   font-family: 'Post';
   src: url('assets/post/post.woff2') format('woff2'),
        url('assets/post/Post.otf') format('opentype');
+
   font-display: swap;
 }
 
@@ -28,7 +29,7 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--hand);
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   line-height: 1.65;
   overflow-x: hidden;
 }
@@ -41,7 +42,7 @@ h1, h2, h3 { font-family: var(--marker); font-weight: 400; }
 h1, h2, .foot-big, .hl-big { -webkit-text-stroke: 0.026em var(--ink); }
 
 h2 {
-  font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
   text-transform: uppercase;
   letter-spacing: 0.02em;
   text-align: center;
@@ -93,12 +94,12 @@ h2::after {
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.35em;
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: clamp(0.9rem, 2.2vw, 1.15rem);
   margin-bottom: 1rem;
 }
 
 .hero h1 {
-  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-size: clamp(3.3rem, 10.5vw, 7rem);
   text-transform: uppercase;
   line-height: 1.05;
 }
@@ -107,20 +108,27 @@ h2::after {
 .hero .sub {
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  font-size: clamp(0.9rem, 2.2vw, 1.25rem);
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
   margin-top: 0.75rem;
 }
 
 .hero .when { margin-top: 1.4rem; }
 .hl-big {
   font-family: var(--marker);
-  font-size: clamp(1.9rem, 5.5vw, 3.2rem);
+  font-size: clamp(2.1rem, 6vw, 3.6rem);
   text-transform: uppercase;
+}
+
+.hero .take3 {
+  margin-top: 0.7rem;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  opacity: 0.75;
+  transform: rotate(-1deg);
 }
 
 .hero .tag {
   margin-top: 1.2rem;
-  font-size: clamp(1rem, 2.4vw, 1.25rem);
+  font-size: clamp(1.15rem, 2.7vw, 1.45rem);
   opacity: 0.9;
 }
 
@@ -183,7 +191,7 @@ h2::after {
 .marquee-track span {
   font-family: var(--marker);
   text-transform: uppercase;
-  font-size: clamp(0.95rem, 2.4vw, 1.3rem);
+  font-size: clamp(1.1rem, 2.7vw, 1.45rem);
   letter-spacing: 0.12em;
 }
 @keyframes scroll {
@@ -242,7 +250,7 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 
 .card h3 {
   text-transform: uppercase;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   margin-bottom: 0.6rem;
   letter-spacing: 0.06em;
 }
@@ -268,16 +276,17 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
   transform: rotate(-6deg);
   margin-bottom: 0.75rem;
 }
-.story-text p { font-size: clamp(1.2rem, 2.6vw, 1.35rem); }
+.story-text p { font-size: clamp(1.35rem, 2.9vw, 1.55rem); }
+.story-text p + p { margin-top: 0.9rem; }
 .signoff {
   margin-top: 1.25rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
 }
 .script {
   font-family: var(--script);
-  font-size: 1.9rem;
+  font-size: 2.1rem;
   text-transform: none;
   letter-spacing: 0;
 }
@@ -286,7 +295,7 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .order { text-align: center; }
 .order-note {
   margin: -0.75rem 0 2rem;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   opacity: 0.75;
 }
 .timeline {
@@ -303,7 +312,7 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 }
 .t-time {
   font-family: var(--marker);
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   text-align: right;
   white-space: nowrap;
   padding: 1.9rem 0;
@@ -353,11 +362,11 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .t-label h3 {
   font-family: var(--marker);
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   letter-spacing: 0.05em;
 }
 .t-label p {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   opacity: 0.85;
   line-height: 1.45;
 }
@@ -366,7 +375,7 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .tbc {
   display: table;
   margin: -0.5rem auto 2.25rem;
-  font-size: 1.02rem;
+  font-size: 1.15rem;
   opacity: 0.7;
   border: 2px dashed rgba(27, 27, 27, 0.45);
   border-radius: 30px 10px 26px 12px / 14px 26px 12px 28px;
@@ -388,7 +397,7 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .venue-text { max-width: 30rem; }
 .venue-text h3 {
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   margin-bottom: 0.6rem;
   letter-spacing: 0.04em;
 }
@@ -409,11 +418,11 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .drink:nth-child(even) img { transform: rotate(4deg); }
 .drink h3 {
   text-transform: uppercase;
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   margin-top: 0.75rem;
   letter-spacing: 0.05em;
 }
-.drink p { font-size: 1.05rem; opacity: 0.85; }
+.drink p { font-size: 1.2rem; opacity: 0.85; }
 .bar-note { margin-top: 2.25rem; opacity: 0.85; }
 
 /* --- what to wear --- */
@@ -467,7 +476,7 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .btn {
   justify-self: center;
   font-family: var(--marker);
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--paper);
@@ -492,7 +501,7 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .faq-list dt {
   font-family: var(--marker);
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   letter-spacing: 0.05em;
   margin-top: 1.6rem;
 }
@@ -531,7 +540,7 @@ footer {
 .foot-big {
   font-family: var(--marker);
   text-transform: uppercase;
-  font-size: clamp(1.3rem, 3.6vw, 2.1rem);
+  font-size: clamp(1.5rem, 4vw, 2.4rem);
   max-width: 26ch;
   margin: 0 auto;
 }
@@ -543,7 +552,7 @@ footer {
 .foot-names {
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
 }
 
 /* ======================= small screens ======================= */
@@ -552,7 +561,7 @@ footer {
   .doodle-cake, .doodle-cupid, .doodle-dove { display: none; }
   .disco { width: 62px; right: 0.75rem; }
   .timeline li { grid-template-columns: 64px 30px 84px 1fr; gap: 0 0.7rem; }
-  .t-time { font-size: 0.95rem; padding: 1.2rem 0; }
+  .t-time { font-size: 1.05rem; padding: 1.2rem 0; }
   .t-icon { padding: 1rem 0; }
   .t-icon img { max-height: 64px; max-width: 80px; }
   .t-label { padding: 1rem 0; }
