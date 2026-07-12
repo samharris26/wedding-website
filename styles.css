@@ -580,3 +580,144 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   .disco, .marquee-track, .scene-sparkles path { animation: none; }
 }
+
+/* ======================= PERSONALISED INVITE ======================= */
+/* Hidden by default; the ?i= token reveals the greeting + note and the namecard. */
+
+.invite-greet, .invite-note, .invite-kids { display: none; }
+.has-invite .invite-greet { display: block; }
+.has-invite .invite-note { display: block; }
+
+.invite-greet {
+  font-family: var(--script);
+  font-size: clamp(1.7rem, 5.5vw, 2.7rem);
+  line-height: 1.05;
+  margin-bottom: 0.6rem;
+}
+.invite-note {
+  margin-top: 1.4rem;
+  font-family: var(--script);
+  font-size: clamp(1.5rem, 3.8vw, 2.1rem);
+  line-height: 1.15;
+}
+.invite-kids {
+  margin-top: 0.4rem;
+  font-size: clamp(1rem, 2.3vw, 1.2rem);
+  opacity: 0.72;
+  font-style: italic;
+}
+
+/* --- namecard overlay --- */
+.namecard {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--paper);
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.75s cubic-bezier(0.7, 0.02, 0.3, 1), opacity 0.6s ease;
+}
+.has-invite .namecard { display: flex; }
+.namecard--gone { transform: translateY(-112%) rotate(-2.5deg); opacity: 0; }
+
+.namecard { overflow: hidden; }
+
+/* festoon lights across the top + tipi field along the bottom */
+.nc-festoon, .nc-scene {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.nc-festoon { top: 0; height: clamp(56px, 10vh, 96px); }
+.nc-scene { bottom: 0; height: clamp(108px, 22vh, 200px); }
+.nc-festoon svg, .nc-scene svg { width: 100%; height: 100%; display: block; }
+
+.ticket { z-index: 2; }
+.namecard-doodle { position: absolute; pointer-events: none; opacity: 0.9; z-index: 1; }
+.nd-1 { width: clamp(64px, 9vw, 112px); top: 15%; left: 6%; transform: rotate(-10deg); }
+.nd-2 { width: clamp(58px, 8vw, 100px); bottom: 24%; right: 8%; transform: rotate(9deg); }
+.nd-3 { width: clamp(42px, 6vw, 70px); top: 14%; right: 8%; transform: rotate(-6deg); }
+.nd-4 { width: clamp(58px, 8vw, 104px); top: 26%; right: 15%; transform: rotate(5deg); opacity: 0.85; }
+@media (max-width: 640px) {
+  .nd-4 { display: none; }
+  .nd-1 { top: 12%; }
+}
+
+.ticket {
+  position: relative;
+  width: min(360px, 86vw);
+  background: #fffaf1;
+  border: 3px solid var(--ink);
+  border-radius: 18px 8px 20px 9px / 10px 20px 9px 18px;
+  padding: 2.4rem 2rem 2rem;
+  text-align: center;
+  box-shadow: 8px 9px 0 rgba(27, 27, 27, 0.9);
+}
+.ticket-punch {
+  width: 30px; height: 30px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+  margin: -3.3rem auto 0.5rem;
+}
+.ticket-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: clamp(0.8rem, 2vw, 0.95rem);
+  opacity: 0.8;
+}
+.ticket-admit {
+  font-family: var(--marker);
+  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0.3rem 0 0.4rem;
+  -webkit-text-stroke: 0.02em var(--ink);
+}
+.ticket-perf { border: none; border-top: 3px dashed var(--ink); margin: 1rem -2rem; opacity: 0.55; }
+.ticket-names {
+  font-family: var(--script);
+  font-size: clamp(1.9rem, 6.5vw, 2.7rem);
+  line-height: 1.05;
+}
+.ticket-meta {
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  opacity: 0.75;
+  margin-top: 0.6rem;
+}
+.ticket-tap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.4rem;
+  font-family: var(--marker);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+}
+.ticket-tap i {
+  width: 10px; height: 10px;
+  border-right: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  transform: rotate(45deg);
+  animation: tap-bob 1.3s ease-in-out infinite;
+}
+@keyframes tap-bob {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  50% { transform: rotate(45deg) translate(3px, 3px); }
+}
+body.invite-locked { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .namecard { transition: opacity 0.4s ease; }
+  .namecard--gone { transform: none; }
+  .ticket-tap i { animation: none; }
+}

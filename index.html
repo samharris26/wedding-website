@@ -3,15 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chloe + Sam · 12th June 2027</title>
-  <meta name="description" content="Chloe + Sam are getting married — and throwing one big party in a field on 12th June 2027. Tipis, festoon lights, dancing and a helter skelter.">
+  <title>Chloe + Sam · 19th June 2027</title>
+  <meta name="description" content="Chloe + Sam are getting married — and throwing one big party in a field on 19th June 2027. Tipis, festoon lights, dancing and a helter skelter.">
   <link rel="icon" href="assets/illustrations/heart-card.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>try{if(new URLSearchParams(location.search).has('i'))document.documentElement.classList.add('has-invite');}catch(e){}</script>
 </head>
 <body>
+
+  <!-- ============ personalised namecard (only shown with ?i= token) ============ -->
+  <div class="namecard" id="namecard" role="button" tabindex="0" aria-label="Tap to enter your invitation">
+
+    <!-- festoon lights strung across the top -->
+    <div class="nc-festoon" aria-hidden="true">
+      <svg viewBox="0 0 1200 90" preserveAspectRatio="xMidYMin slice">
+        <g fill="none" stroke="#1b1b1b" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 20 C 50 40, 100 62, 150 62 C 200 62, 250 40, 300 20 C 350 40, 400 62, 450 62 C 500 62, 550 40, 600 20 C 650 40, 700 62, 750 62 C 800 62, 850 40, 900 20 C 950 40, 1000 62, 1050 62 C 1100 62, 1150 40, 1200 20" stroke-width="2.4"/>
+          <g stroke-width="2">
+            <path d="M75 41 l0 11"/><circle cx="75" cy="59" r="5.5" fill="#1b1b1b"/>
+            <path d="M150 62 l0 11"/><circle cx="150" cy="80" r="5.5"/>
+            <path d="M225 41 l0 11"/><circle cx="225" cy="59" r="5.5" fill="#1b1b1b"/>
+            <path d="M375 41 l0 11"/><circle cx="375" cy="59" r="5.5"/>
+            <path d="M450 62 l0 11"/><circle cx="450" cy="80" r="5.5" fill="#1b1b1b"/>
+            <path d="M525 41 l0 11"/><circle cx="525" cy="59" r="5.5"/>
+            <path d="M675 41 l0 11"/><circle cx="675" cy="59" r="5.5" fill="#1b1b1b"/>
+            <path d="M750 62 l0 11"/><circle cx="750" cy="80" r="5.5"/>
+            <path d="M825 41 l0 11"/><circle cx="825" cy="59" r="5.5" fill="#1b1b1b"/>
+            <path d="M975 41 l0 11"/><circle cx="975" cy="59" r="5.5"/>
+            <path d="M1050 62 l0 11"/><circle cx="1050" cy="80" r="5.5" fill="#1b1b1b"/>
+            <path d="M1125 41 l0 11"/><circle cx="1125" cy="59" r="5.5"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <img class="namecard-doodle nd-1" src="assets/illustrations/champagne-clink.png" alt="">
+    <img class="namecard-doodle nd-2" src="assets/illustrations/cupid-cocktail.png" alt="">
+    <img class="namecard-doodle nd-3" src="assets/illustrations/dove.png" alt="">
+    <img class="namecard-doodle nd-4" src="assets/illustrations/fireworks-big.png" alt="">
+
+    <div class="ticket">
+      <div class="ticket-punch"></div>
+      <p class="ticket-eyebrow">an invitation to the field</p>
+      <div class="ticket-admit" id="ticketAdmit">Admit 4</div>
+      <hr class="ticket-perf">
+      <div class="ticket-names" id="ticketNames">Lauren, Paul, Ivy &amp; Freddie</div>
+      <p class="ticket-meta">Sat 19 June 2027 · the tipi field</p>
+      <p class="ticket-tap">tap to enter <i></i></p>
+    </div>
+
+    <!-- hand-drawn tipi field grounding the bottom -->
+    <div class="nc-scene" aria-hidden="true">
+      <svg viewBox="0 0 1200 220" preserveAspectRatio="xMidYMax slice">
+        <g fill="none" stroke="#1b1b1b" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M0 176 C 250 168, 550 170, 750 172 C 950 174, 1080 170, 1200 174" stroke-width="2.2" opacity=".8"/>
+
+          <!-- mini helter skelter, left -->
+          <path fill="#f7efe4" stroke="none" d="M96 116 c 0 -18 14 -30 26 -30 c 12 0 26 12 26 30 l 0 60 l -52 0 z"/>
+          <path d="M96 116 c 0 -18 14 -30 26 -30 c 12 0 26 12 26 30" stroke-width="2.4"/>
+          <path d="M122 86 l0 -12 M122 74 l11 4 l-11 4" stroke-width="2.2"/>
+          <path d="M99 116 L 94 176 M145 116 L 150 176 M96 116 l52 0" stroke-width="2.2"/>
+          <path d="M112 116 l-4 60 l9 0 l3 -60 z" fill="#1b1b1b" stroke-width="1"/>
+          <path d="M132 116 l-1 60 l9 0 l0 -60 z" fill="#1b1b1b" stroke-width="1"/>
+          <path d="M148 130 c 16 12 18 28 6 40 c -8 9 -9 16 -4 26" stroke-width="2.6"/>
+          <path d="M86 176 c 20 7 52 7 72 0" stroke-width="2.4"/>
+
+          <!-- trees -->
+          <path d="M300 150 c -8 -14 4 -26 18 -24 c 4 -12 22 -14 30 -4 c 12 -6 26 4 22 16 c 10 6 4 20 -8 22 c -20 6 -52 4 -66 -4 z M322 158 l 1 18" stroke-width="2.2"/>
+          <path d="M910 152 c -7 -12 3 -22 15 -20 c 3 -10 19 -12 26 -3 c 10 -5 22 3 18 14 c 9 5 3 18 -7 19 c -17 5 -44 3 -57 -3 z M927 159 l 1 16" stroke-width="2"/>
+
+          <!-- tipis -->
+          <path fill="#f7efe4" stroke="none" d="M600 92 C 588 120 568 158 556 175 C 585 182 620 182 646 175 C 632 158 613 120 602 92 Z"/>
+          <path d="M596 94 C 586 120 568 156 556 174" stroke-width="3"/>
+          <path d="M604 94 C 615 120 632 158 646 175" stroke-width="2.2"/>
+          <path d="M556 174 C 585 181 620 182 647 175" stroke-width="2.5"/>
+          <path d="M596 94 l-8 -13 M604 94 l9 -13 M600 92 l-1 -17" stroke-width="2.2"/>
+          <path d="M573 148 c 18 5 40 5 58 0" stroke-width="1.9"/>
+          <path d="M590 175 c 2 -17 6 -26 10 -29 c 4 3 8 12 10 29 c -6 2 -14 2 -20 0 z" fill="#1b1b1b" stroke-width="1.6"/>
+
+          <path fill="#f7efe4" stroke="none" d="M482 118 C 472 140 458 164 449 176 C 468 181 497 181 514 176 C 505 164 492 140 485 118 Z"/>
+          <path d="M478 120 C 470 140 458 162 449 175" stroke-width="2.4"/>
+          <path d="M486 120 C 494 142 508 164 514 176" stroke-width="1.9"/>
+          <path d="M449 175 C 468 181 497 181 515 176" stroke-width="2.1"/>
+          <path d="M478 120 l-6 -11 M486 120 l7 -11" stroke-width="1.9"/>
+          <path d="M488 176 c 2 -13 5 -20 8 -22 c 3 2 6 9 7 22 c -5 2 -10 2 -15 0 z" fill="#1b1b1b" stroke-width="1.4"/>
+
+          <path fill="#f7efe4" stroke="none" d="M722 116 C 712 140 697 165 688 176 C 708 181 738 181 755 176 C 746 165 732 140 725 116 Z"/>
+          <path d="M718 118 C 710 140 697 163 688 175" stroke-width="2.5"/>
+          <path d="M726 118 C 734 142 749 165 755 176" stroke-width="1.9"/>
+          <path d="M688 175 C 708 181 738 181 756 176" stroke-width="2.1"/>
+          <path d="M718 118 l-6 -11 M726 118 l7 -11" stroke-width="1.9"/>
+          <path d="M728 176 c 2 -13 5 -20 8 -22 c 3 2 6 9 7 22 c -5 2 -10 2 -15 0 z" fill="#1b1b1b" stroke-width="1.4"/>
+
+          <path fill="#f7efe4" stroke="none" d="M804 140 C 796 156 784 170 775 177 C 790 181 819 181 832 177 C 823 170 812 156 807 140 Z"/>
+          <path d="M801 142 C 794 156 784 169 775 176" stroke-width="2"/>
+          <path d="M807 142 C 813 157 824 170 832 177" stroke-width="1.6"/>
+          <path d="M775 176 C 790 181 819 181 833 177" stroke-width="1.8"/>
+
+          <!-- birds + sparkles -->
+          <path d="M400 66 c 6 -6 12 -6 17 0 c 5 -6 11 -6 17 0" stroke-width="2"/>
+          <path d="M985 74 c 5 -5 10 -5 14 0 c 4 -5 9 -5 14 0" stroke-width="1.9"/>
+          <path d="M250 58 l0 14 M243 65 l14 0" stroke-width="2"/>
+          <path d="M1040 52 l0 13 M1033 58 l13 0" stroke-width="1.9"/>
+          <path d="M660 44 l0 12 M654 50 l12 0" stroke-width="1.8"/>
+
+          <!-- grass ticks -->
+          <g stroke-width="1.8" opacity=".7">
+            <path d="M210 184 c 1 -6 4 -9 7 -10 M360 186 c 1 -6 4 -9 7 -10 M540 186 c 1 -6 4 -9 7 -10 M870 186 c 1 -6 4 -9 7 -10 M1010 184 c 1 -6 4 -9 7 -10"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+  </div>
 
   <!-- ======================= HERO ======================= -->
   <header class="hero">
@@ -19,12 +126,15 @@
       <img src="assets/illustrations/disco-ball-lines.png" alt="">
     </div>
 
+    <p class="invite-greet" id="inviteGreet">Lauren, Paul, Ivy &amp; Freddie —</p>
     <p class="eyebrow">save the date</p>
     <h1>Chloe <span class="amp">+</span> Sam</h1>
     <p class="sub">are finally getting married</p>
-    <p class="when"><span class="hl-big">12th June 2027</span></p>
+    <p class="when"><span class="hl-big">19th June 2027</span></p>
     <p class="take3">date no. 3 — this one's in permanent marker</p>
     <p class="tag">one field, one dance floor, one enormous party</p>
+    <p class="invite-note" id="inviteNote">we've saved <span id="inviteSpots">4</span> spots in the field for you</p>
+    <p class="invite-kids" id="inviteKids">Ivy &amp; Freddie — the helter skelter's basically yours.</p>
 
     <img class="doodle doodle-clink" src="assets/illustrations/champagne-clink.png" alt="">
     <img class="doodle doodle-cake" src="assets/illustrations/heart-cake-love-club.png" alt="">
@@ -214,8 +324,8 @@
   <!-- ======================= MARQUEE ======================= -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 12 june 2027 ✦&nbsp;</span>
-      <span>tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 12 june 2027 ✦&nbsp;</span>
+      <span>tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;</span>
+      <span>tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;</span>
     </div>
   </div>
 
@@ -228,7 +338,7 @@
         <article class="card">
           <img src="assets/illustrations/heart-party-time.png" alt="Hand-drawn love heart sweet reading party time">
           <h3>when</h3>
-          <p><strong>Saturday 12th June 2027.</strong> Doors 1pm, carriages midnight — full running order below.</p>
+          <p><strong>Saturday 19th June 2027.</strong> Doors 1pm, carriages midnight — full running order below.</p>
         </article>
         <article class="card">
           <img src="assets/illustrations/tent-trees.png" alt="Hand-drawn tents and trees">
@@ -284,7 +394,7 @@
       <div class="story-text">
         <img class="story-rings" src="assets/illustrations/rings-bold.png" alt="Hand-drawn wedding rings">
         <h2>first the vows,<br>then the volume</h2>
-        <p>We're doing the ceremony quietly with family a few days before. So by the time you arrive, we'll already be married — no rows of chairs, no waiting around, no speeches before you're allowed a drink. Just one enormous celebration with everyone we love.</p>
+        <p>We're doing the ceremony quietly with family a couple of weeks before. So by the time you arrive, we'll already be married — no rows of chairs, no waiting around, no speeches before you're allowed a drink. Just one enormous celebration with everyone we love.</p>
         <p>And yes, eagle-eyed guests — this is the third date we've announced. The first two fell through; this one has been laminated. After all this waiting, we plan to make it count.</p>
         <p class="signoff">xoxo, <span class="script">Chloe + Sam</span></p>
       </div>
@@ -476,7 +586,7 @@
       <img class="faq-img" src="assets/illustrations/camera-heart.png" alt="Hand-drawn camera with a heart">
       <dl class="faq-list">
         <dt>haven't you two announced a date before?</dt>
-        <dd>Twice, in fact — and we're very sorry to your calendars. Consider those the warm-up acts. This one is real: 12th June 2027, rain or shine, come what may.</dd>
+        <dd>Twice, in fact — and we're very sorry to your calendars. Consider those the warm-up acts. This one is real: 19th June 2027, rain or shine, come what may.</dd>
         <dt>can we bring the kids?</dt>
         <dd>Absolutely — ours will be there causing trouble. The helter skelter is technically for them. Technically.</dd>
         <dt>what if it rains?</dt>
@@ -497,8 +607,46 @@
     <img class="foot-cheers" src="assets/illustrations/sparkler.png" alt="">
     <p class="foot-big">we can't wait to celebrate with you — honestly, we've waited long enough</p>
     <img class="foot-heart" src="assets/illustrations/heart-xoxo.png" alt="Hand-drawn love heart sweet reading xoxo">
-    <p class="foot-names">Chloe + Sam &nbsp;·&nbsp; 12th June 2027</p>
+    <p class="foot-names">Chloe + Sam &nbsp;·&nbsp; 19th June 2027</p>
   </footer>
+
+  <!-- ============ personalised invite (DEMO stub — replace map with get_invite RPC) ============ -->
+  <script>
+  (function () {
+    var INVITES = {
+      lauren: { admit: 4, names: 'Lauren, Paul, Ivy & Freddie', greet: 'Lauren, Paul, Ivy & Freddie', spots: 4, kids: "Ivy & Freddie — the helter skelter's basically yours." },
+      deb:    { admit: 2, names: 'Auntie Deb & Big Gaz', greet: 'Auntie Deb & Big Gaz', spots: 2, kids: '' },
+      jess:   { admit: 2, names: 'Jess & guest', greet: 'Jess', spots: 2, kids: '', note: "we've saved you a spot, plus one for whoever you bring" }
+    };
+    var key = (new URLSearchParams(location.search).get('i') || '').toLowerCase();
+    var data = INVITES[key];
+    var card = document.getElementById('namecard');
+
+    if (!data) { document.documentElement.classList.remove('has-invite'); return; }
+
+    document.getElementById('ticketAdmit').textContent = 'Admit ' + data.admit;
+    document.getElementById('ticketNames').textContent = data.names;
+    document.getElementById('inviteGreet').textContent = data.greet + ' —';
+    if (data.note) { document.getElementById('inviteNote').textContent = data.note; }
+    else { document.getElementById('inviteSpots').textContent = data.spots; }
+    var kids = document.getElementById('inviteKids');
+    if (data.kids) { kids.textContent = data.kids; kids.style.display = 'block'; }
+    else { kids.style.display = 'none'; }
+
+    document.body.classList.add('invite-locked');
+
+    function enter() {
+      card.classList.add('namecard--gone');
+      document.body.classList.remove('invite-locked');
+      setTimeout(function () { card.style.display = 'none'; }, 800);
+    }
+    card.addEventListener('click', enter);
+    card.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enter(); }
+    });
+    card.focus();
+  })();
+  </script>
 
 </body>
 </html>
