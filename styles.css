@@ -132,6 +132,21 @@ h2::after {
   opacity: 0.9;
 }
 
+.hero-name {
+  margin-top: 1.6rem;
+  font-family: var(--script);
+  font-size: clamp(1.9rem, 5.2vw, 2.9rem);
+  line-height: 1.05;
+}
+.hero-name-mark { white-space: nowrap; }
+.hero-note {
+  margin: 0.55rem auto 0;
+  max-width: 34ch;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  opacity: 0.82;
+}
+.hero-note strong { -webkit-text-stroke: 0.02em var(--ink); }
+
 /* scattered hero doodles */
 .doodle { position: absolute; pointer-events: none; }
 .doodle-clink {
