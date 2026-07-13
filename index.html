@@ -44,16 +44,16 @@
       <img src="assets/illustrations/disco-ball-lines.png" alt="">
     </div>
 
-    <p class="invite-greet" id="inviteGreet">Lauren, Paul, Ivy &amp; Freddie —</p>
+    <p class="invite-greet" id="inviteGreet">Lauren, Paul, Ivy &amp; Freddie</p>
     <p class="eyebrow">save the date</p>
     <h1>Chloe <span class="amp">+</span> Sam</h1>
     <p class="sub">are finally getting married</p>
     <p class="when"><span class="hl-big">19th June 2027</span></p>
     <p class="take3">date no. 3 — this one's in permanent marker</p>
     <p class="tag">one field, one dance floor, one enormous party</p>
-    <p class="hero-name">welcome to <span class="hero-name-mark">The After Party</span></p>
+    <p class="hero-name">Welcome to <span class="hero-name-mark">the After Party</span></p>
     <p class="hero-note">the whole day, start to finish — doors 1pm, dancing 'til midnight, and <strong>everyone</strong> is invited to all of it</p>
-    <p class="invite-note" id="inviteNote">we've saved <span id="inviteSpots">4</span> spots in the field for you</p>
+    <p class="invite-note" id="inviteNote">We've saved <span id="inviteSpots">4</span> spots in the field for you</p>
     <p class="invite-kids" id="inviteKids">Ivy &amp; Freddie — the helter skelter's basically yours.</p>
 
     <img class="doodle doodle-clink" src="assets/illustrations/champagne-clink.png" alt="">
@@ -244,8 +244,8 @@
   <!-- ======================= MARQUEE ======================= -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span>the after party ✦ tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;</span>
-      <span>the after party ✦ tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;</span>
+      <span>the after party ✦ tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;the after party ✦ tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;</span>
+      <span>the after party ✦ tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;the after party ✦ tipis ✦ festoon lights ✦ cocktails ✦ dinner ✦ dancing ✦ disco ✦ helter skelter ✦ love club ✦ third time lucky ✦ 19 june 2027 ✦&nbsp;</span>
     </div>
   </div>
 
@@ -488,11 +488,19 @@
           <label><input type="radio" name="coming" value="yes"> yes</label>
           <label><input type="radio" name="coming" value="obviously"> obviously yes</label>
         </fieldset>
+        <fieldset class="rsvp-kids">
+          <legend>bringing the kids?</legend>
+          <label><input type="checkbox" name="kids"> yes, the kids are coming too</label>
+          <p class="rsvp-hint">optional — either way is grand, we just need to know for catering</p>
+        </fieldset>
         <label>anything you can't eat?
           <input type="text" name="diet" placeholder="allergies, dislikes, strong opinions" autocomplete="off">
         </label>
         <label>one song that gets you dancing
           <input type="text" name="song" placeholder="choose wisely — it might get played" autocomplete="off">
+        </label>
+        <label>anything else? <span class="rsvp-opt">(optional)</span>
+          <textarea name="message" rows="3" placeholder="a message, a request, a warning..."></textarea>
         </label>
         <button class="btn" type="submit">send it ✦</button>
       </form>
@@ -536,7 +544,7 @@
     var INVITES = {
       lauren: { admit: 4, names: 'Lauren, Paul, Ivy & Freddie', greet: 'Lauren, Paul, Ivy & Freddie', spots: 4, kids: "Ivy & Freddie — the helter skelter's basically yours." },
       deb:    { admit: 2, names: 'Auntie Deb & Big Gaz', greet: 'Auntie Deb & Big Gaz', spots: 2, kids: '' },
-      jess:   { admit: 2, names: 'Jess & guest', greet: 'Jess', spots: 2, kids: '', note: "we've saved you a spot, plus one for whoever you bring" }
+      jess:   { admit: 2, names: 'Jess & guest', greet: 'Jess', spots: 2, kids: '', note: "We've saved you a spot, plus one for whoever you bring" }
     };
     var key = (new URLSearchParams(location.search).get('i') || '').toLowerCase();
     var data = INVITES[key];
@@ -546,7 +554,7 @@
 
     document.getElementById('ticketAdmit').textContent = 'Admit ' + data.admit;
     document.getElementById('ticketNames').textContent = data.names;
-    document.getElementById('inviteGreet').textContent = data.greet + ' —';
+    document.getElementById('inviteGreet').textContent = data.greet;
     if (data.note) { document.getElementById('inviteNote').textContent = data.note; }
     else { document.getElementById('inviteSpots').textContent = data.spots; }
     var kids = document.getElementById('inviteKids');

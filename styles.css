@@ -201,7 +201,8 @@ h2::after {
 }
 .marquee-track {
   display: inline-block;
-  animation: scroll 28s linear infinite;
+  white-space: nowrap;
+  animation: scroll 56s linear infinite;
 }
 .marquee-track span {
   font-family: var(--marker);
@@ -268,6 +269,14 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
   font-size: 1.5rem;
   margin-bottom: 0.6rem;
   letter-spacing: 0.06em;
+}
+/* plan-so-far cards: bolder, bigger When / Where / What + bigger body */
+.plan .card h3 {
+  font-size: clamp(1.8rem, 3.6vw, 2.2rem);
+  -webkit-text-stroke: 0.025em var(--ink);
+}
+.plan .card p {
+  font-size: clamp(1.32rem, 2.7vw, 1.55rem);
 }
 
 /* --- story --- */
@@ -488,6 +497,26 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .rsvp-coming legend { float: left; margin-right: 1.5rem; padding: 0; }
 .rsvp-coming label { display: inline-flex; align-items: center; gap: 0.5rem; }
 .rsvp-coming input { accent-color: var(--ink); width: 1.1rem; height: 1.1rem; }
+.rsvp-kids { border: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; align-items: center; }
+.rsvp-kids legend { float: left; margin-right: 1.5rem; padding: 0; }
+.rsvp-kids label { display: inline-flex; align-items: center; gap: 0.5rem; }
+.rsvp-kids input { accent-color: var(--ink); width: 1.1rem; height: 1.1rem; }
+.rsvp-hint { flex-basis: 100%; font-size: 0.95rem; opacity: 0.6; margin-top: 0.1rem; }
+.rsvp-opt { opacity: 0.5; font-size: 0.85em; }
+.rsvp-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0.4rem;
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 2.5px solid var(--ink);
+  border-radius: 16px 6px 18px 7px / 8px 18px 7px 16px;
+  padding: 0.6rem 0.9rem;
+  resize: vertical;
+}
+.rsvp-form textarea::placeholder { color: var(--ink); opacity: 0.4; }
+.rsvp-form textarea:focus { outline: none; box-shadow: 3px 3px 0 rgba(27, 27, 27, 0.25); }
 .btn {
   justify-self: center;
   font-family: var(--marker);
@@ -516,9 +545,10 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .faq-list dt {
   font-family: var(--marker);
   text-transform: uppercase;
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   letter-spacing: 0.05em;
   margin-top: 1.6rem;
+  -webkit-text-stroke: 0.02em var(--ink);
 }
 .faq-list dd { margin-top: 0.35rem; opacity: 0.88; }
 .faq-img {
