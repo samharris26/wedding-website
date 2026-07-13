@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="150" viewBox="0 0 560 150">
+  <g fill="none" stroke="#1b1b1b" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M0 122 C 140 117 280 120 420 121 C 470 121 520 119 560 122" stroke-width="2.2" opacity="0.8"/>
+
+    <path fill="#f7efe4" stroke="none" d="M55 92 C 49 104 41 116 34 122 C 46 126 66 126 76 122 C 69 116 61 104 57 92 Z"/>
+    <path d="M52 94 C 47 104 40 115 34 121" stroke-width="1.8"/>
+    <path d="M58 94 C 63 105 70 116 76 122" stroke-width="1.5"/>
+    <path d="M34 121 C 46 125 66 126 77 122" stroke-width="1.6"/>
+    <path d="M52 94 l-4 -8 M58 94 l5 -8" stroke-width="1.5"/>
+
+    <path fill="#f7efe4" stroke="none" d="M175 52 C 163 82 145 112 135 122 C 158 128 195 128 220 122 C 208 112 191 82 182 52 Z"/>
+    <path d="M170 54 C 161 82 145 110 135 121" stroke-width="2.6"/>
+    <path d="M178 54 C 188 84 205 112 220 122" stroke-width="2"/>
+    <path d="M135 121 C 158 127 195 128 221 122" stroke-width="2.2"/>
+    <path d="M170 54 l-7 -12 M178 54 l8 -12 M175 52 l-1 -16" stroke-width="1.9"/>
+    <path d="M150 100 c 16 4 40 4 56 0" stroke-width="1.6"/>
+    <path d="M165 122 c 2 -15 5 -23 9 -26 c 4 3 7 11 9 26 c -5 2 -13 2 -18 0 z" fill="#1b1b1b" stroke-width="1.4"/>
+
+    <path fill="#f7efe4" stroke="none" d="M330 78 C 322 96 312 112 304 122 C 320 126 344 126 356 122 C 348 112 338 96 334 78 Z"/>
+    <path d="M327 80 C 320 96 312 110 304 121" stroke-width="2.1"/>
+    <path d="M333 80 C 340 97 350 112 356 122" stroke-width="1.7"/>
+    <path d="M304 121 C 320 126 344 126 357 122" stroke-width="1.8"/>
+    <path d="M327 80 l-5 -9 M333 80 l6 -9" stroke-width="1.6"/>
+    <path d="M322 122 c 2 -12 4 -18 6 -20 c 2 2 4 8 5 20 c -4 2 -8 2 -11 0 z" fill="#1b1b1b" stroke-width="1.2"/>
+
+    <path d="M470 96 c -7 -12 3 -22 15 -20 c 3 -10 19 -12 26 -3 c 10 -5 22 3 18 14 c 9 5 3 18 -7 19 c -17 5 -44 3 -57 -3 z M487 106 l 1 16" stroke-width="1.9"/>
+
+    <g stroke-width="1.6" opacity="0.65">
+      <path d="M110 130 c 1 -6 4 -9 7 -10 M250 131 c 1 -6 4 -9 7 -10 M400 130 c 1 -6 4 -9 7 -10"/>
+    </g>
+  </g>
+</svg>

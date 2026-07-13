@@ -625,28 +625,74 @@ footer {
 
 .namecard { overflow: hidden; }
 
-/* festoon lights across the top + tipi field along the bottom */
+/* festoon lights across the top + tipi field along the bottom.
+   Seamless repeating SVG tiles keep a constant height and never crop,
+   at any screen width. */
 .nc-festoon, .nc-scene {
   position: absolute;
   left: 0;
   width: 100%;
   z-index: 0;
   pointer-events: none;
-  overflow: hidden;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
 }
-.nc-festoon { top: 0; height: clamp(56px, 10vh, 96px); }
-.nc-scene { bottom: 0; height: clamp(108px, 22vh, 200px); }
-.nc-festoon svg, .nc-scene svg { width: 100%; height: 100%; display: block; }
+.nc-festoon {
+  top: 0;
+  height: clamp(52px, 8vh, 82px);
+  background-image: url("assets/festoon-tile.svg");
+  background-position: top center;
+}
+.nc-scene {
+  bottom: 0;
+  height: clamp(92px, 16vh, 148px);
+  background-image: url("assets/tipi-field-tile.svg");
+  background-position: bottom center;
+}
 
-.ticket { z-index: 2; }
-.namecard-doodle { position: absolute; pointer-events: none; opacity: 0.9; z-index: 1; }
-.nd-1 { width: clamp(64px, 9vw, 112px); top: 15%; left: 6%; transform: rotate(-10deg); }
-.nd-2 { width: clamp(58px, 8vw, 100px); bottom: 24%; right: 8%; transform: rotate(9deg); }
-.nd-3 { width: clamp(42px, 6vw, 70px); top: 14%; right: 8%; transform: rotate(-6deg); }
-.nd-4 { width: clamp(58px, 8vw, 104px); top: 26%; right: 15%; transform: rotate(5deg); opacity: 0.85; }
-@media (max-width: 640px) {
-  .nd-4 { display: none; }
-  .nd-1 { top: 12%; }
+/* the ticket sits above the field */
+.ticket { position: relative; z-index: 2; }
+
+.ticket-shades {
+  width: clamp(46px, 13vw, 62px);
+  display: block;
+  margin: 0.1rem auto 0.5rem;
+  transform: rotate(-6deg);
+}
+
+/* tear-off notches on the perforation line */
+.ticket-perf { position: relative; }
+.ticket-perf::before, .ticket-perf::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  background: var(--paper);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.ticket-perf::before { left: -11px; }
+.ticket-perf::after { right: -11px; }
+
+/* "no. 3" stamp — nod to third time lucky */
+.ticket-stamp {
+  position: absolute;
+  right: -6px;
+  bottom: 14px;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed var(--ink);
+  border-radius: 54% 46% 50% 50% / 50% 54% 46% 50%;
+  font-family: var(--marker);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  line-height: 1;
+  opacity: 0.7;
+  transform: rotate(-13deg);
 }
 
 .ticket {
