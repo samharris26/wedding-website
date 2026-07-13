@@ -718,13 +718,22 @@ footer {
   font-size: clamp(0.8rem, 2vw, 0.95rem);
   opacity: 0.8;
 }
+.ticket-name {
+  font-family: var(--marker);
+  font-size: clamp(2.3rem, 8.5vw, 3.3rem);
+  text-transform: uppercase;
+  line-height: 0.98;
+  margin: 0.05rem 0 0.2rem;
+  -webkit-text-stroke: 0.022em var(--ink);
+}
 .ticket-admit {
   font-family: var(--marker);
-  font-size: clamp(2.6rem, 9vw, 3.6rem);
+  font-size: clamp(1.55rem, 5vw, 2.05rem);
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   line-height: 1;
-  margin: 0.3rem 0 0.4rem;
-  -webkit-text-stroke: 0.02em var(--ink);
+  margin: 0.2rem 0 0.35rem;
+  opacity: 0.9;
 }
 .ticket-perf { border: none; border-top: 3px dashed var(--ink); margin: 1rem -2rem; opacity: 0.55; }
 .ticket-names {
