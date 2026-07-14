@@ -75,7 +75,7 @@ h2::after {
   right: clamp(0.5rem, 6vw, 6rem);
   width: clamp(84px, 12vw, 150px);
   transform-origin: top center;
-  animation: swing 6s ease-in-out infinite;
+  animation: swing 5s ease-in-out infinite;
 }
 .disco::before {
   content: "";
@@ -87,8 +87,8 @@ h2::after {
   background: var(--ink);
 }
 @keyframes swing {
-  0%, 100% { transform: rotate(3.5deg); }
-  50% { transform: rotate(-3.5deg); }
+  0%, 100% { transform: rotate(6.5deg); }
+  50% { transform: rotate(-6.5deg); }
 }
 
 .eyebrow {
@@ -133,9 +133,9 @@ h2::after {
 }
 
 .hero-name {
-  margin-top: 1.6rem;
+  margin: 0.4rem 0 0.3rem;
   font-family: var(--script);
-  font-size: clamp(1.9rem, 5.2vw, 2.9rem);
+  font-size: clamp(2rem, 5.4vw, 3rem);
   line-height: 1.05;
 }
 .hero-name-mark { white-space: nowrap; }
@@ -164,7 +164,7 @@ h2::after {
 .doodle-cupid {
   width: clamp(80px, 11vw, 145px);
   left: clamp(0.75rem, 9vw, 10rem);
-  top: clamp(17rem, 46vh, 24rem);
+  top: clamp(22rem, 55vh, 31rem);
   transform: rotate(-4deg) scaleX(-1);
 }
 .doodle-dove {
@@ -336,10 +336,11 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 }
 .t-time {
   font-family: var(--marker);
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   text-align: right;
   white-space: nowrap;
   padding: 1.9rem 0;
+  -webkit-text-stroke: 0.015em var(--ink);
 }
 /* wobbly hand-drawn spine running through the node column */
 .t-node { position: relative; align-self: stretch; }
@@ -386,11 +387,12 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .t-label h3 {
   font-family: var(--marker);
   text-transform: uppercase;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   letter-spacing: 0.05em;
+  -webkit-text-stroke: 0.025em var(--ink);
 }
 .t-label p {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   opacity: 0.85;
   line-height: 1.45;
 }
@@ -421,9 +423,10 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .venue-text { max-width: 30rem; }
 .venue-text h3 {
   text-transform: uppercase;
-  font-size: 1.65rem;
+  font-size: 1.75rem;
   margin-bottom: 0.6rem;
   letter-spacing: 0.04em;
+  -webkit-text-stroke: 0.025em var(--ink);
 }
 .venue-list { list-style: none; margin-top: 1rem; }
 .venue-list li { margin: 0.45rem 0; }
@@ -442,9 +445,10 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .drink:nth-child(even) img { transform: rotate(4deg); }
 .drink h3 {
   text-transform: uppercase;
-  font-size: 1.4rem;
+  font-size: 1.55rem;
   margin-top: 0.75rem;
   letter-spacing: 0.05em;
+  -webkit-text-stroke: 0.02em var(--ink);
 }
 .drink p { font-size: 1.2rem; opacity: 0.85; }
 .bar-note { margin-top: 2.25rem; opacity: 0.85; }
@@ -497,11 +501,11 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .rsvp-coming legend { float: left; margin-right: 1.5rem; padding: 0; }
 .rsvp-coming label { display: inline-flex; align-items: center; gap: 0.5rem; }
 .rsvp-coming input { accent-color: var(--ink); width: 1.1rem; height: 1.1rem; }
-.rsvp-kids { border: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; align-items: center; }
-.rsvp-kids legend { float: left; margin-right: 1.5rem; padding: 0; }
+.rsvp-kids { border: none; display: block; padding: 0.2rem 0 0.3rem 1rem; border-left: 3px solid rgba(27, 27, 27, 0.22); }
+.rsvp-kids legend { padding: 0; margin-bottom: 0.1rem; }
 .rsvp-kids label { display: inline-flex; align-items: center; gap: 0.5rem; }
 .rsvp-kids input { accent-color: var(--ink); width: 1.1rem; height: 1.1rem; }
-.rsvp-hint { flex-basis: 100%; font-size: 0.95rem; opacity: 0.6; margin-top: 0.1rem; }
+.rsvp-hint { font-size: 0.95rem; opacity: 0.6; margin: 0 0 0.5rem; }
 .rsvp-opt { opacity: 0.5; font-size: 0.85em; }
 .rsvp-form textarea {
   display: block;
@@ -545,10 +549,10 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .faq-list dt {
   font-family: var(--marker);
   text-transform: uppercase;
-  font-size: 1.45rem;
+  font-size: 1.5rem;
   letter-spacing: 0.05em;
   margin-top: 1.6rem;
-  -webkit-text-stroke: 0.02em var(--ink);
+  -webkit-text-stroke: 0.04em var(--ink);
 }
 .faq-list dd { margin-top: 0.35rem; opacity: 0.88; }
 .faq-img {
