@@ -428,6 +428,9 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
   letter-spacing: 0.04em;
   -webkit-text-stroke: 0.025em var(--ink);
 }
+.venue-address { margin-top: 0.9rem; font-size: 1.2rem; letter-spacing: 0.02em; }
+.venue-links { margin-top: 0.4rem; font-size: 1.1rem; }
+.venue-links a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 .venue-list { list-style: none; margin-top: 1rem; }
 .venue-list li { margin: 0.45rem 0; }
 
