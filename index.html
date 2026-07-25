@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The After Party · Chloe + Sam · 19 June 2027</title>
   <meta name="description" content="Chloe + Sam are getting married — and throwing The After Party, one enormous do in a field on 19th June 2027. The whole day, everyone invited: tipis, festoon lights, dancing and a helter skelter.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="The After Party · Chloe + Sam">
+  <meta property="og:description" content="You're invited — one big day in a field, Saturday 19 June 2027. Tap for your invite and RSVP.">
+  <meta property="og:image" content="https://wedding-website-phi-sandy.vercel.app/assets/og-card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://wedding-website-phi-sandy.vercel.app/">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/illustrations/heart-card.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -435,15 +443,18 @@
       card.focus();
 
       var rows = members.map(function (m) {
-        return '<div class="rsvp-person" data-id="' + esc(m.id) + '" data-name="' + esc(m.name) + '">' +
-          '<label class="rp-name"><input type="checkbox" checked> <span>' + esc(m.name) +
-          (m.type === "Child" ? ' <em class="rp-kid">(little one)</em>' : "") + "</span></label>" +
-          '<input type="text" class="rp-diet" placeholder="anything they can&#39;t eat? (optional)">' +
-          "</div>";
+        return '<label class="rsvp-person" data-id="' + esc(m.id) + '" data-name="' + esc(m.name) + '">' +
+          '<input type="checkbox" checked> <span>' + esc(m.name) +
+          (m.type === "Child" ? ' <em class="rp-kid">(little one)</em>' : "") + "</span></label>";
       }).join("");
+      var kidsNote = kids.length
+        ? '<p class="rsvp-kids-note">little ones are very welcome — but if you&#39;d rather make it a night off, that&#39;s absolutely fine too. just untick them, no side-eye here.</p>'
+        : "";
       form.innerHTML =
-        '<p class="rsvp-lead">tick who&#39;s coming — untick anyone who can&#39;t make it</p>' +
-        rows +
+        '<fieldset class="rsvp-people"><legend>tick who&#39;s coming — untick anyone who can&#39;t make it</legend>' +
+        rows + "</fieldset>" + kidsNote +
+        "<label>anything you can&#39;t eat?" +
+          '<input type="text" name="diet" placeholder="allergies, dislikes, strong opinions — tell us whose" autocomplete="off"></label>' +
         "<label>thinking of staying over?" +
           '<select name="staying" class="rsvp-sel">' +
             '<option value="">not sure yet</option>' +
@@ -462,13 +473,17 @@
         e.preventDefault();
         var btn = form.querySelector("button.btn");
         var err = document.getElementById("rsvpErr");
+        var diet = form.querySelector('[name="diet"]').value.trim();
+        var first = true;
         var responses = [].map.call(form.querySelectorAll(".rsvp-person"), function (row) {
-          return {
+          var r = {
             guest_id: row.getAttribute("data-id"),
             name: row.getAttribute("data-name"),
             coming: row.querySelector("input[type=checkbox]").checked,
-            diet: row.querySelector(".rp-diet").value.trim()
+            diet: first ? diet : ""
           };
+          first = false;
+          return r;
         });
         btn.disabled = true; btn.textContent = "sending…";
         rpc("submit_rsvp", {
