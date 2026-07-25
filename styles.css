@@ -626,7 +626,9 @@ footer {
     margin: 1.5rem auto 0;
     transform: rotate(-6deg);
   }
+  .story-text, .venue-text { text-align: center; }
   .story-text h2 { text-align: center; }
+  .story-text h2::after { margin-left: auto; }
 }
 
 @media (prefers-reduced-motion: reduce) {
