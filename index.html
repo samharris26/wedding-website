@@ -340,31 +340,7 @@
     <section class="rsvp">
       <h2>rsvp</h2>
       <p class="rsvp-note" id="rsvpNote" style="display:none"></p>
-      <form class="rsvp-form" id="rsvpForm" onsubmit="return false">
-        <label>your name(s)
-          <input type="text" name="names" placeholder="e.g. auntie deb + big gaz" autocomplete="off">
-        </label>
-        <fieldset class="rsvp-coming">
-          <legend>coming?</legend>
-          <label><input type="radio" name="coming" value="yes"> yes</label>
-          <label><input type="radio" name="coming" value="obviously"> obviously yes</label>
-        </fieldset>
-        <fieldset class="rsvp-kids">
-          <legend>bringing the kids?</legend>
-          <p class="rsvp-hint">optional — either way is grand, we just need to know for catering</p>
-          <label><input type="checkbox" name="kids"> yes, the kids are coming too</label>
-        </fieldset>
-        <label>anything you can't eat?
-          <input type="text" name="diet" placeholder="allergies, dislikes, strong opinions" autocomplete="off">
-        </label>
-        <label>one song that gets you dancing
-          <input type="text" name="song" placeholder="choose wisely — it might get played" autocomplete="off">
-        </label>
-        <label>anything else? <span class="rsvp-opt">(optional)</span>
-          <textarea name="message" rows="3" placeholder="a message, a request, a warning..."></textarea>
-        </label>
-        <button class="btn" type="submit">send it ✦</button>
-      </form>
+      <form class="rsvp-form" id="rsvpForm" onsubmit="return false"></form>
       <img class="rsvp-img" src="assets/illustrations/love-letters.png" alt="Hand-drawn love letters and a cocktail">
     </section>
 
@@ -410,7 +386,7 @@
       document.documentElement.classList.remove("has-invite");
       document.body.classList.remove("invite-locked");
       if (card) card.style.display = "none";
-      form.querySelectorAll("input,textarea,button,select").forEach(function (el) { el.disabled = true; });
+      form.style.display = "none";
       note.style.display = "block";
       note.textContent = msg || "RSVPs work through your personal invite link — open the link we sent you on WhatsApp and the form will know exactly who you are.";
     }

@@ -687,6 +687,14 @@ footer {
   .story-text, .venue-text { text-align: center; }
   .story-text h2 { text-align: center; }
   .story-text h2::after { margin-left: auto; }
+
+  /* hero body copy was reading small next to the rest of the page's 1.4rem body text */
+  .hero .sub { font-size: 1.2rem; }
+  .hero .take3 { font-size: 1.15rem; }
+  .hero .tag { font-size: 1.4rem; }
+  .hero-note { font-size: 1.4rem; }
+  .invite-note { font-size: 1.4rem; }
+  .invite-kids { font-size: 1.15rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
