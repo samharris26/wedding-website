@@ -477,6 +477,61 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
   font-size: clamp(1.35rem, 2.9vw, 1.55rem);
 }
 
+/* --- rsvp (live form) --- */
+.rsvp-note {
+  max-width: 34rem;
+  margin: -0.5rem auto 1.75rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.35rem);
+  opacity: 0.8;
+}
+.rsvp-lead { font-size: clamp(1.2rem, 2.6vw, 1.4rem); }
+.rsvp-person {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  border: 2.5px solid var(--ink);
+  border-radius: 18px 7px 20px 8px / 9px 20px 8px 18px;
+  padding: 0.65rem 1rem;
+}
+.rp-name { display: inline-flex; align-items: center; gap: 0.6rem; cursor: pointer; }
+.rp-name input { accent-color: var(--ink); width: 1.25rem; height: 1.25rem; }
+.rp-kid { font-size: 0.85em; opacity: 0.65; }
+.rsvp-person .rp-diet {
+  flex: 1;
+  min-width: 200px;
+  font: inherit;
+  font-size: 0.95em;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 2px dashed rgba(27, 27, 27, 0.35);
+  padding: 0.25rem 0.2rem;
+}
+.rsvp-person .rp-diet::placeholder { color: var(--ink); opacity: 0.35; }
+.rsvp-person .rp-diet:focus { outline: none; border-bottom-color: var(--ink); }
+.rsvp-person:has(.rp-name input:not(:checked)) { opacity: 0.45; }
+.rsvp-person:has(.rp-name input:not(:checked)) .rp-diet { visibility: hidden; }
+.rsvp-sel {
+  display: block;
+  width: 100%;
+  margin-top: 0.4rem;
+  font: inherit;
+  color: var(--ink);
+  background: transparent;
+  border: 2.5px solid var(--ink);
+  border-radius: 16px 6px 18px 7px / 8px 18px 7px 16px;
+  padding: 0.6rem 0.9rem;
+}
+.rsvp-done {
+  font-family: var(--marker);
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  -webkit-text-stroke: 0.02em var(--ink);
+  text-align: center;
+}
+.rsvp-done-sub { text-align: center; opacity: 0.75; margin-top: 0.5rem; }
+
 /* --- rsvp --- */
 .rsvp { text-align: center; position: relative; }
 .rsvp-form {

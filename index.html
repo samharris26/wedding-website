@@ -26,8 +26,8 @@
       <p class="ticket-eyebrow">you're invited to</p>
       <div class="ticket-name">The After Party</div>
       <hr class="ticket-perf">
-      <div class="ticket-admit" id="ticketAdmit">Admit 4</div>
-      <div class="ticket-names" id="ticketNames">Lauren, Paul, Ivy &amp; Freddie</div>
+      <div class="ticket-admit" id="ticketAdmit">&nbsp;</div>
+      <div class="ticket-names" id="ticketNames">&nbsp;</div>
       <p class="ticket-meta">Sat 19 June 2027 · the field</p>
       <p class="ticket-tap">tap to enter <i></i></p>
       <div class="ticket-stamp" aria-hidden="true">no. 3</div>
@@ -44,15 +44,15 @@
       <img src="assets/illustrations/disco-ball-lines.png" alt="">
     </div>
 
-    <p class="invite-greet" id="inviteGreet">Lauren, Paul, Ivy &amp; Freddie</p>
+    <p class="invite-greet" id="inviteGreet"></p>
     <p class="hero-name">Welcome to <span class="hero-name-mark">the After Party</span></p>
     <h1>Chloe <span class="amp">+</span> Sam</h1>
     <p class="sub">are finally getting married</p>
     <p class="when"><span class="hl-big">19th June 2027</span></p>
     <p class="tag">one field, one dance floor, one big party</p>
     <p class="hero-note">the whole day, start to finish — doors 1pm, dancing 'til midnight, and <strong>everyone</strong> is invited to all of it</p>
-    <p class="invite-note" id="inviteNote">We've saved <span id="inviteSpots">4</span> spots in the field for you</p>
-    <p class="invite-kids" id="inviteKids">Ivy &amp; Freddie — the helter skelter's basically yours.</p>
+    <p class="invite-note" id="inviteNote"></p>
+    <p class="invite-kids" id="inviteKids"></p>
 
     <img class="doodle doodle-clink" src="assets/illustrations/champagne-clink.png" alt="">
     <img class="doodle doodle-cake" src="assets/illustrations/heart-cake-love-club.png" alt="">
@@ -331,7 +331,8 @@
     <!-- ======================= RSVP ======================= -->
     <section class="rsvp">
       <h2>rsvp</h2>
-      <form class="rsvp-form" onsubmit="return false">
+      <p class="rsvp-note" id="rsvpNote" style="display:none"></p>
+      <form class="rsvp-form" id="rsvpForm" onsubmit="return false">
         <label>your name(s)
           <input type="text" name="names" placeholder="e.g. auntie deb + big gaz" autocomplete="off">
         </label>
@@ -370,41 +371,132 @@
     <p class="foot-names">The After Party &nbsp;·&nbsp; Chloe + Sam &nbsp;·&nbsp; 19th June 2027</p>
   </footer>
 
-  <!-- ============ personalised invite (DEMO stub — replace map with get_invite RPC) ============ -->
+  <!-- ============ personalised invite + live RSVP (Supabase; anon key can only call get_invite / submit_rsvp) ============ -->
   <script>
   (function () {
-    var INVITES = {
-      lauren: { admit: 4, names: 'Lauren, Paul, Ivy & Freddie', greet: 'Lauren, Paul, Ivy & Freddie', spots: 4, kids: "Ivy & Freddie — the helter skelter's basically yours." },
-      deb:    { admit: 2, names: 'Auntie Deb & Big Gaz', greet: 'Auntie Deb & Big Gaz', spots: 2, kids: '' },
-      jess:   { admit: 2, names: 'Jess & guest', greet: 'Jess', spots: 2, kids: '', note: "We've saved you a spot, plus one for whoever you bring" }
-    };
-    var key = (new URLSearchParams(location.search).get('i') || '').toLowerCase();
-    var data = INVITES[key];
-    var card = document.getElementById('namecard');
+    "use strict";
+    var SB_URL = "https://pvxowwyllxdrpajxucmd.supabase.co";
+    var SB_KEY = "sb_publishable_NkFDAjQqRME02vxqPTPgDg_uJomdXUJ";
 
-    if (!data) { document.documentElement.classList.remove('has-invite'); return; }
+    var token = (new URLSearchParams(location.search).get("i") || "").trim();
+    var card = document.getElementById("namecard");
+    var form = document.getElementById("rsvpForm");
+    var note = document.getElementById("rsvpNote");
 
-    document.getElementById('ticketAdmit').textContent = 'Admit ' + data.admit;
-    document.getElementById('ticketNames').textContent = data.names;
-    document.getElementById('inviteGreet').textContent = data.greet;
-    if (data.note) { document.getElementById('inviteNote').textContent = data.note; }
-    else { document.getElementById('inviteSpots').textContent = data.spots; }
-    var kids = document.getElementById('inviteKids');
-    if (data.kids) { kids.textContent = data.kids; kids.style.display = 'block'; }
-    else { kids.style.display = 'none'; }
-
-    document.body.classList.add('invite-locked');
-
-    function enter() {
-      card.classList.add('namecard--gone');
-      document.body.classList.remove('invite-locked');
-      setTimeout(function () { card.style.display = 'none'; }, 800);
+    function rpc(fn, args) {
+      return fetch(SB_URL + "/rest/v1/rpc/" + fn, {
+        method: "POST",
+        headers: { apikey: SB_KEY, Authorization: "Bearer " + SB_KEY, "Content-Type": "application/json" },
+        body: JSON.stringify(args)
+      }).then(function (r) {
+        return r.text().then(function (t) {
+          if (!r.ok) throw new Error(t || String(r.status));
+          return t ? JSON.parse(t) : null;
+        });
+      });
     }
-    card.addEventListener('click', enter);
-    card.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); enter(); }
+    function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); }
+    function firstName(n) { return String(n || "").trim().split(/\s+/)[0]; }
+
+    function genericMode(msg) {
+      document.documentElement.classList.remove("has-invite");
+      document.body.classList.remove("invite-locked");
+      if (card) card.style.display = "none";
+      form.querySelectorAll("input,textarea,button,select").forEach(function (el) { el.disabled = true; });
+      note.style.display = "block";
+      note.textContent = msg || "RSVPs work through your personal invite link — open the link we sent you on WhatsApp and the form will know exactly who you are.";
+    }
+
+    function personalMode(inv) {
+      var members = inv.members || [];
+      var kids = members.filter(function (m) { return m.type === "Child"; });
+
+      document.getElementById("ticketAdmit").textContent = "Admit " + inv.spots;
+      document.getElementById("ticketNames").textContent = inv.greeting;
+      document.getElementById("inviteGreet").textContent = inv.greeting;
+      document.getElementById("inviteNote").textContent =
+        "We've saved " + inv.spots + (inv.spots === 1 ? " spot" : " spots") + " in the field for you";
+      var kidsEl = document.getElementById("inviteKids");
+      if (kids.length) {
+        kidsEl.textContent = kids.map(function (k) { return firstName(k.name); }).join(" & ") + " — the helter skelter's basically yours.";
+        kidsEl.style.display = "block";
+      } else { kidsEl.style.display = "none"; }
+
+      document.body.classList.add("invite-locked");
+      function enter() {
+        card.classList.add("namecard--gone");
+        document.body.classList.remove("invite-locked");
+        setTimeout(function () { card.style.display = "none"; }, 800);
+      }
+      card.addEventListener("click", enter);
+      card.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); enter(); }
+      });
+      card.focus();
+
+      var rows = members.map(function (m) {
+        return '<div class="rsvp-person" data-id="' + esc(m.id) + '" data-name="' + esc(m.name) + '">' +
+          '<label class="rp-name"><input type="checkbox" checked> <span>' + esc(m.name) +
+          (m.type === "Child" ? ' <em class="rp-kid">(little one)</em>' : "") + "</span></label>" +
+          '<input type="text" class="rp-diet" placeholder="anything they can&#39;t eat? (optional)">' +
+          "</div>";
+      }).join("");
+      form.innerHTML =
+        '<p class="rsvp-lead">tick who&#39;s coming — untick anyone who can&#39;t make it</p>' +
+        rows +
+        "<label>thinking of staying over?" +
+          '<select name="staying" class="rsvp-sel">' +
+            '<option value="">not sure yet</option>' +
+            '<option value="camping">camping in the next field</option>' +
+            '<option value="bed nearby">finding a bed nearby</option>' +
+            '<option value="home">heading home after</option>' +
+          "</select></label>" +
+        "<label>one song that gets you dancing" +
+          '<input type="text" name="song" placeholder="choose wisely — it might get played" autocomplete="off"></label>' +
+        '<label>anything else? <span class="rsvp-opt">(optional)</span>' +
+          '<textarea name="message" rows="3" placeholder="a message, a request, a warning..."></textarea></label>' +
+        '<button class="btn" type="submit">send it ✦</button>' +
+        '<p class="rsvp-note" id="rsvpErr" style="display:none"></p>';
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var btn = form.querySelector("button.btn");
+        var err = document.getElementById("rsvpErr");
+        var responses = [].map.call(form.querySelectorAll(".rsvp-person"), function (row) {
+          return {
+            guest_id: row.getAttribute("data-id"),
+            name: row.getAttribute("data-name"),
+            coming: row.querySelector("input[type=checkbox]").checked,
+            diet: row.querySelector(".rp-diet").value.trim()
+          };
+        });
+        btn.disabled = true; btn.textContent = "sending…";
+        rpc("submit_rsvp", {
+          p_token: token,
+          p_responses: responses,
+          p_song: form.querySelector('[name="song"]').value.trim() || null,
+          p_staying: form.querySelector('[name="staying"]').value || null,
+          p_message: form.querySelector('[name="message"]').value.trim() || null
+        }).then(function () {
+          var coming = responses.filter(function (r) { return r.coming; }).length;
+          form.innerHTML =
+            '<p class="rsvp-done">got it — ' + (coming ? "see you in the field ✦" : "we&#39;ll miss you x") + "</p>" +
+            '<p class="rsvp-done-sub">plans change? just open your link again and resend.</p>';
+        }).catch(function () {
+          btn.disabled = false; btn.textContent = "send it ✦";
+          err.style.display = "block";
+          err.textContent = "that didn't send — check you're online and give it another go.";
+        });
+      });
+    }
+
+    if (!token) { genericMode(); return; }
+    rpc("get_invite", { p_token: token }).then(function (inv) {
+      if (!inv) { genericMode("Hmm — that invite link didn't quite work. Double-check it with Chloe & Sam, or just message us to RSVP."); return; }
+      personalMode(inv);
+    }).catch(function () {
+      genericMode("We couldn't load your invite just now — refresh to try again, or message us to RSVP.");
     });
-    card.focus();
   })();
   </script>
 
