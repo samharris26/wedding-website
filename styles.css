@@ -469,6 +469,14 @@ section { padding: clamp(3.5rem, 9vh, 6rem) 0; }
 .wear-img-2 { width: clamp(70px, 8vw, 105px); transform: rotate(7deg); }
 .wear-text { max-width: 30rem; text-align: left; }
 
+/* --- more to follow --- */
+.more { text-align: center; }
+.more-text {
+  max-width: 34rem;
+  margin: 0 auto;
+  font-size: clamp(1.35rem, 2.9vw, 1.55rem);
+}
+
 /* --- rsvp --- */
 .rsvp { text-align: center; position: relative; }
 .rsvp-form {
